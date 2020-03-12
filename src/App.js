@@ -5,7 +5,8 @@ import Roju from './components/Date';
 import Temperature from './components/Temperature';
 import './index.css';
 
-const baseURL = "https://api.openweathermap.org/data/2.5/";
+const baseURL = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/";
+
 
 class App extends Component {
 

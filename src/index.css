@@ -1,13 +1,118 @@
-body {
+/* GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,700&display=swap');
+
+
+/* WEBSITE RESET */
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  font-family: 'Fira Sans', sans-serif;
 }
+
+@media only screen and (min-width: 1600px) {
+   html {
+     font-size: 75%;
+   }
+}
+
+@media only screen and (min-width: 1800px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+:root {
+  --darkBlue: #00416A;
+  --lightGrey: #E4E5E6;
+  --fontColor: #202121;
+  --orange: #F2994A;
+  --lightOrange: #F2C94C;
+  --violet:#8E2DE2;
+  --mediumBlue:#4A00E0;
+}
+
+/* app container */
+.app {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(90deg, var(--violet), var(--mediumBlue));
+  padding: 5rem;
+  transition: all .4s ease;
+}
+
+.app.warm {
+  background-image: linear-gradient(90deg, var(--orange), var(--lightOrange));
+  color: var(--fontColor);
+  
+}
+
+.app.cold {
+  background-image: linear-gradient(90deg, var(--darkBlue), var(--lightGrey));
+  color: var(--fontColor);
+}
+
+.form {
+  width: 70%;
+}
+
+/* search bar */
+.searchInp { 
+  width: 100%;
+  padding: 1.5rem;
+  border: none;
+  outline: none;
+  appearance: none;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 0px 2rem 0px 2rem;
+  font-size: 1.6rem;
+  transition: all .3s ease-in;
+
+}
+
+.searchInp:focus {
+  background-color: rgba(255, 255, 255, .75);
+}
+
+.location {
+  margin: 4rem 0 .5rem 0;
+  font-size: 2.5rem;
+}
+
+.date {
+  font-size: 1.6rem;
+}
+
+.temperature {
+  margin: 4rem 0 0 0;
+  text-align: center;
+  font-size: 6rem;
+  background-color: rgba(255, 255, 255, .2);
+  padding: 1.5rem 4.5rem;
+  border-radius: 1rem;
+  box-shadow: 3px 6px rgba(0, 0,0, .2);
+}
+
+/* Show alert */
+.show-alert {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,-30%);
+  border: 2px solid #ff0084;
+  color: #fff;
+  border-radius: 0px 1.5rem 0 1.5rem;
+  padding: 2rem 5.5rem;
+  font-size: 1.6rem;
+  transition: all .3s ease;
+}
+

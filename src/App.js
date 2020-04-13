@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Location from './components/Location';
 import Roju from './components/Date';
 import Temperature from './components/Temperature';
+import {key} from './components/key';
 import './index.css';
 
 const baseURL = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/";
@@ -39,20 +40,16 @@ showAlert = (msg) => {
    } ); 
 }
 
-handleSubmit = (e) => {
+ handleSubmit = (e) => {
   e.preventDefault();
-  const city = e.target.firstChild.value;
+  const city = this.state.cityName;
   
   if(city === "") {
-    return;
+    return this.showAlert("please enter city name!");
   } else {
-    this.setState( {
-      cityName: city
-    } )
-
    //check if the city name is valid
    let items;
-    fetch(`${baseURL}weather?q=${this.state.cityName}&units=metric&appid=${process.env.REACT_APP_API_KEY}`)
+   fetch(`${baseURL}weather?q=${this.state.cityName}&units=metric&appid=${key}`)
    .then( (response) => {
      if(response.ok) {
        return response.json();
@@ -64,10 +61,10 @@ handleSubmit = (e) => {
         return Promise.reject(response);
      }
    } )
-    //render if cityname is valid
+   
    .then( data => {
      items= data;
-     return fetch(`${baseURL}weather?q=${data.name}&units=metric&appid=${process.env.REACT_APP_API_KEY}`);
+     return fetch(`${baseURL}weather?q=${data.name}&units=metric&appid=${key}`);
    } )
    .then( res => {
      this.setState( {
@@ -76,7 +73,9 @@ handleSubmit = (e) => {
        hasError: false
      } );
    } )
-   .catch( err => console.log(err) );
+   .catch( err => {
+     console.log(err);
+   } );
   } 
 }
 
